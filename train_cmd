@@ -1,0 +1,4 @@
+python main.py --exp_name first_train --tasks "prim_ibp" --reload_data "prim_ibp,prim_ibp.train,prim_ibp.valid,prim_ibp.test" --reload_size 1000000 --emb_dim 1024 --n_enc_layers 6 --n_dec_layers 6 --n_heads 8 --optimizer "adam,lr=0.0001" --batch_size 32 --epoch_size 300000 --validation_metrics valid_prim_ibp_acc  
+
+
+--fp16 true --amp 2

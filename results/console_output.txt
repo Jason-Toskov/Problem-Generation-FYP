@@ -1,0 +1,160 @@
+prim_ibp.train
+unpacking
+Loop done
+Data saved
+((tensor([[ 0,  0,  0,  0],
+        [67, 67, 67, 67],
+        [79, 79, 79, 79],
+        [54, 33, 54, 54],
+        [71, 72, 55, 71],
+        [83, 82, 12, 83],
+        [55, 12, 72, 54],
+        [12,  0, 82, 12],
+        [71,  1, 33, 33],
+        [90,  1, 71, 71],
+        [ 0,  1, 82, 82],
+        [ 1,  1, 54, 54],
+        [ 1,  1, 72, 72],
+        [ 1,  1, 82, 83],
+        [ 1,  1, 12, 12],
+        [ 1,  1,  0,  0]]), tensor([11,  8, 16, 16])), (tensor([[ 0,  0,  0,  0],
+        [54, 54, 33, 54],
+        [47, 47, 72, 47],
+        [71, 71, 82, 71],
+        [82, 82, 33, 82],
+        [71, 71, 54, 71],
+        [86, 83, 72, 84],
+        [55, 54, 82, 54],
+        [12, 12, 12, 55],
+        [71, 33, 53, 12],
+        [82, 72, 12, 71],
+        [81, 83,  0, 83],
+        [ 0, 12,  1, 33],
+        [ 1,  0,  1, 71],
+        [ 1,  1,  1, 84],
+        [ 1,  1,  1, 54],
+        [ 1,  1,  1, 72],
+        [ 1,  1,  1, 85],
+        [ 1,  1,  1, 12],
+        [ 1,  1,  1,  0]]), tensor([13, 14, 12, 20])), tensor([3, 2, 5, 5]))
+Found 344337 parameters.
+Epoch  0  generated equation:
+-0.38729  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'add', 'INT+', '1', 'x']
+-0.42287  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'add', 'INT+', '1', 'mul', 'INT+', '1', 'x']
+-0.42727  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'add', 'INT+', '1', 'mul', 'INT+', '2', 'x']
+-0.44255  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'add', 'INT+', '2', 'x']
+-0.46907  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '3', 'add', 'INT+', '1', 'x']
+-0.47695  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'add', 'INT+', '1', 'pow', 'x', 'INT+', '2']
+-0.48636  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'add', 'INT+', '1', 'mul', 'INT+', '6', 'x']
+-0.48764  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'add', 'INT+', '1', 'mul', 'INT-', '1', 'x']
+-0.48810  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '3', 'add', 'INT+', '1', 'mul', 'INT+', '1', 'x']
+-0.49184  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '3', 'add', 'INT+', '1', 'mul', 'INT+', '2', 'x']
+Loss: 1.4009
+Epoch  1  generated equation:
+-0.35790  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'add', 'INT+', '1', 'x']
+-0.44580  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '2', 'pow', 'x', 'INT+', '2']
+-0.45192  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'add', 'INT+', '2', 'x']
+-0.47080  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '1', 'add', 'INT+', '1', 'x']
+-0.47304  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '3', 'add', 'INT+', '1', 'x']
+-0.47680  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '6', 'pow', 'x', 'INT+', '2']
+-0.49617  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'ln', 'x']
+-0.50313  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '2', 'pow', 'x', 'INT+', '6']
+-0.51564  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '5', 'add', 'INT+', '1', 'x']
+-0.52639  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '2', 'pow', 'x', 'INT+', '1']
+Loss: 0.9572
+Epoch  2  generated equation:
+-0.45635  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '2', 'pow', 'x', 'INT+', '2']
+-0.46328  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '2', 'pow', 'x', 'INT+', '3']
+-0.49145  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '1', 'ln', 'x']
+-0.49243  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '6', 'pow', 'x', 'INT+', '1']
+-0.50478  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '6', 'pow', 'x', 'INT+', '2']
+-0.50648  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'ln', 'x']
+-0.51038  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '2', 'pow', 'x', 'INT+', '1']
+-0.51216  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '2', 'pow', 'x', 'INT+', '6']
+-0.51509  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '3', 'ln', 'x']
+-0.52369  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '2', 'pow', 'x', 'INT+', '1']
+Loss: 0.8846
+Epoch  3  generated equation:
+-0.39970  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'add', 'INT+', '1', 'mul', 'INT+', '6', 'x']
+-0.39973  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '3', 'add', 'INT+', '1', 'mul', 'INT+', '6', 'x']
+-0.40091  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'add', 'INT+', '1', 'mul', 'INT+', '3', 'x']
+-0.40294  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '3', 'add', 'INT+', '1', 'mul', 'INT+', '3', 'x']
+-0.40569  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'add', 'INT+', '1', 'mul', 'INT+', '2', 'x']
+-0.40650  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '3', 'add', 'INT+', '1', 'mul', 'INT+', '2', 'x']
+-0.42548  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '0', 'pow', 'x', 'INT+', '3']
+-0.43668  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'add', 'INT+', '1', 'mul', 'INT+', '4', 'x']
+-0.43696  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '3', 'add', 'INT+', '1', 'mul', 'INT+', '4', 'x']
+-0.44134  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'add', 'INT+', '1', 'x']
+Loss: 0.8392
+Epoch  4  generated equation:
+-0.38543  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'add', 'INT+', '1', 'mul', 'INT+', '3', 'x']
+-0.39318  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'add', 'INT+', '1', 'x']
+-0.39839  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'add', 'INT+', '1', 'mul', 'INT+', '6', 'x']
+-0.40390  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '3', 'add', 'INT+', '1', 'mul', 'INT+', '3', 'x']
+-0.41116  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '3', 'add', 'INT+', '1', 'mul', 'INT+', '6', 'x']
+-0.41787  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '3', 'add', 'INT+', '1', 'x']
+-0.42137  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'add', 'INT+', '1', 'mul', 'INT+', '4', 'x']
+-0.42154  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '2', 'pow', 'x', 'INT+', '3']
+-0.43784  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '6', 'pow', 'x', 'INT+', '3']
+-0.43803  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'add', 'INT+', '1', 'mul', 'INT+', '2', 'x']
+Loss: 0.8138
+Epoch  5  generated equation:
+-0.36854  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'add', 'INT+', '1', 'mul', 'INT+', '6', 'x']
+-0.39612  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '3', 'add', 'INT+', '1', 'mul', 'INT+', '6', 'x']
+-0.39977  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'add', 'INT+', '1', 'x']
+-0.40920  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'add', 'INT+', '1', 'mul', 'INT+', '3', 'x']
+-0.41791  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '3', 'add', 'INT+', '1', 'x']
+-0.42312  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'mul', 'add', 'INT+', '1', 'x', 'exp', 'x']
+-0.42481  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'add', 'INT+', '1', 'mul', 'INT+', '4', 'x']
+-0.42837  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'add', 'INT+', '1', 'mul', 'INT+', '2', 'x']
+-0.43327  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '3', 'add', 'INT+', '1', 'mul', 'INT+', '3', 'x']
+-0.43682  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '3', 'add', 'INT+', '1', 'mul', 'INT+', '2', 'x']
+Loss: 0.7976
+Epoch  6  generated equation:
+-0.40540  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '3', 'add', 'INT+', '1', 'x']
+-0.41190  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'add', 'INT+', '1', 'x']
+-0.41571  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '2', 'pow', 'x', 'INT+', '3']
+-0.43538  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '0', 'pow', 'x', 'INT+', '3']
+-0.43793  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '6', 'pow', 'x', 'INT+', '3']
+-0.46595  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '6', 'pow', 'x', 'INT+', '2']
+-0.48520  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '4', 'add', 'INT+', '1', 'x']
+-0.48653  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '2', 'pow', 'x', 'INT+', '2']
+-0.48791  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '6', 'pow', 'x', 'INT+', '5']
+-0.49117  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '0', 'pow', 'x', 'INT+', '2']
+Loss: 0.7958
+Epoch  7  generated equation:
+-0.45590  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '6', 'pow', 'x', 'INT+', '2']
+-0.46857  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '0', 'pow', 'x', 'INT+', '2']
+-0.48471  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '2', 'pow', 'x', 'INT+', '2']
+-0.48552  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '2', 'pow', 'x', 'INT+', '3']
+-0.48853  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '0', 'pow', 'x', 'INT+', '3']
+-0.49226  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '6', 'pow', 'x', 'INT+', '3']
+-0.49423  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '0', 'x']
+-0.50916  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '6', 'pow', 'x', 'INT+', '2']
+-0.53026  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '6', 'pow', 'x', 'INT+', '3']
+-0.54333  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '6', 'pow', 'x', 'INT+', '5']
+Loss: 0.7996
+Epoch  8  generated equation:
+-0.39079  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'add', 'INT+', '1', 'x']
+-0.42713  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '0', 'pow', 'x', 'INT+', '3']
+-0.42883  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '3', 'add', 'INT+', '1', 'x']
+-0.43127  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '2', 'pow', 'x', 'INT+', '3']
+-0.45583  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '2', 'pow', 'x', 'INT+', '2']
+-0.45921  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '0', 'pow', 'x', 'INT+', '2']
+-0.48804  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '5', 'add', 'INT+', '1', 'x']
+-0.49281  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'add', 'INT+', '4', 'x']
+-0.49637  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '2', 'add', 'INT+', '2', 'x']
+-0.49955  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'pow', 'x', 'INT+', '4', 'add', 'INT+', '1', 'x']
+Loss: 0.7905
+Epoch  9  generated equation:
+-0.43900  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '2', 'pow', 'x', 'INT+', '2']
+-0.44345  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '2', 'pow', 'x', 'INT+', '3']
+-0.44706  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '2', 'pow', 'x', 'INT+', '4']
+-0.46023  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '2', 'pow', 'x', 'INT+', '5']
+-0.46831  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '6', 'pow', 'x', 'INT+', '2']
+-0.47889  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '6', 'pow', 'x', 'INT+', '3']
+-0.49385  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'INT+', '1', '0', 'x']
+-0.55043  INVALID PREFIX EXPRESSION  ['sub', "Y'", 'mul', 'x', 'add', 'INT+', '1', 'x']
+-6.07303  OK  x
+-13.20657  INVALID PREFIX EXPRESSION  []
+Loss: 0.7687
