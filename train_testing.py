@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 import sys
 
-sys.stdout = open("results/console_output_fixedexpressions.txt", "w")
+# sys.stdout = open("results/console_output_fixedexpressions.txt", "w")
 
 model_path = './fwd_bwd_ibp.pth'
 
@@ -51,48 +51,48 @@ params = AttrDict({
     'share_inout_emb': True,
     'reload_model': model_path,
 
+    # Train params
+    # I'm not 100% sure what all these do, but they're all required for the model to train
     'reload_data': "prim_ibp,prim_ibp.train,prim_ibp.valid,prim_ibp.test",
     'reload_size': 1000,
     'batch_size': 4,
     'env_base_seed': 0,
+    'n_nodes':1,
+    'node_id':0,
+    'local_rank':0,
+    'global_rank':0,
+    'world_size':1,
+    'n_gpu_per_node':1,
     'num_workers': 10,
     'same_nb_ops_per_batch': False,
 
-})
-params.n_nodes = 1
-params.node_id = 0
-params.local_rank = 0
-params.global_rank = 0
-params.world_size = 1
-params.n_gpu_per_node = 1
 
+})
+
+# Train one batch
 def enc_dec_step(batch, optimizer, encoder, decoder):
         """
         Encoding / decoding step.
         """
-        # encoder, decoder = modules['encoder'], modules['decoder']
         encoder.train()
         decoder.train()
 
-        # batch
+        # unpack batch
+        # x1 = equation to solve, x2 = equation solution
+        # Hence, we only care about x1 for equation generation
+        # TODO: will want to stop x2 from loading at all to save memory
         (x1, len1), (x2, len2), _ = batch
 
+        # Start of equation is the problem type (eg. -Y')
+        # TODO: generalise to other problem types
         eq_start = x1[:3]
         eq_start_len = torch.clone(len1)
         eq_start_len[:] = 3
 
+        # Output should be the whole equation
         eq_out = x1
         eq_out_len = len1
 
-
-        # # target words to predict
-        # alen = torch.arange(len2.max(), dtype=torch.long, device=len2.device)
-        # pred_mask = alen[:, None] < len2[None] - 1  # do not predict anything given the last target word
-        # y = x2[1:].masked_select(pred_mask[:-1])
-        # assert len(y) == (len2 - 1).sum().item()
-
-        # # cuda
-        # x1, len1, x2, len2, y = to_cuda(x1, len1, x2, len2, y)
 
         # target words to predict
         alen = torch.arange(eq_out_len.max(), dtype=torch.long, device=eq_out_len.device)
@@ -103,9 +103,11 @@ def enc_dec_step(batch, optimizer, encoder, decoder):
         # cuda
         eq_start, eq_start_len, eq_out, eq_out_len, y = to_cuda(eq_start, eq_start_len, eq_out, eq_out_len, y)
 
-        # forward / loss
+        # forward pass
         encoded = encoder('fwd', x=eq_start, lengths=eq_start_len, causal=False)
         decoded = decoder('fwd', x=eq_out, lengths=eq_out_len, causal=True, src_enc=encoded.transpose(0, 1), src_len=eq_start_len)
+        
+        # Prediction step to get loss
         _, loss = decoder('predict', tensor=decoded, pred_mask=pred_mask, y=y, get_scores=False)
 
         # optimize
@@ -113,18 +115,21 @@ def enc_dec_step(batch, optimizer, encoder, decoder):
         loss.backward()
         optimizer.step()
 
-        # breakpoint()
-
         return loss
 
 
+# Generate some problems using the transformer
 def test_seq_gen(env, enc_model, dec_model):
 
+    # This is the input for integral problems (-Y')
     test_seq = torch.LongTensor([0, 67, 79]).view(-1, 1)
     test_len = torch.LongTensor([3])
+
+    # Fwd encoder pass
     with torch.no_grad():
         encoded = enc_model('fwd', x=test_seq, lengths=test_len, causal=False).transpose(0, 1)
 
+    # Do a beam search to generate outputs
     beam_size = 10
     with torch.no_grad():
         _, _, beam = dec_model.generate_beam(encoded, test_len, beam_size=beam_size, length_penalty=1.0, early_stopping=1, max_len=200)
@@ -133,12 +138,15 @@ def test_seq_gen(env, enc_model, dec_model):
     assert len(hypotheses) == beam_size
 
 
+    # Convert outputs to math equations
     for score, sent in sorted(hypotheses, key=lambda x: x[0], reverse=True):
 
         # parse decoded hypothesis
         ids = sent[1:].tolist()                  # decoded token IDs
         tok = [env.id2word[wid] for wid in ids]  # convert to prefix
 
+        # Currently I just remove the furst 2 tokens as the seem to break prefix_to_infix
+        # TODO: change this to convert Y' to f'(x) (This should fix the breaking problem)
         if tok[:2] != ['sub', "Y'"]:
             print('invalid prefix!')
 
@@ -147,8 +155,6 @@ def test_seq_gen(env, enc_model, dec_model):
             hyp = env.prefix_to_infix(tok_crop)       # convert to infix
             hyp = env.infix_to_sympy(hyp)        # convert to SymPy
 
-            # check whether we recover f if we differentiate the hypothesis
-            # note that sometimes, SymPy fails to show that hyp' - f == 0, and the result is considered as invalid, although it may be correct
             res = "OK"
 
         except:
@@ -159,28 +165,24 @@ def test_seq_gen(env, enc_model, dec_model):
         print("%.5f  %s  %s" % (score, res, hyp))
 
 
+# Env is an overarching environment object that does a bunch of useful things
 env = build_env(params)
-# x = env.local_dict['x']
 
+# Parse data path
 s = [x.split(',') for x in params.reload_data.split(';') if len(x) > 0]
 data_path = {task: (train_path, valid_path, test_path) for task, train_path, valid_path, test_path in s}
 
-# dataloader = {
-#     task: iter(env.create_train_iterator(task, params, data_path))
-#     for task in params.tasks
-# }
-
+# this both creates the dataset and the dataloader
 dl = env.create_train_iterator(params.tasks[0], params, data_path)
 
-te = next(iter(dl))
-print(te)
+# te = next(iter(dl))
+# print(te)
 
-# breakpoint()
-
+# Create the transformer parts
 enc_model = TransformerModel(params, env.id2word, is_encoder=True, with_output=False)
 dec_model = TransformerModel(params, env.id2word, is_encoder=False, with_output=True)
 
-
+# Collect all model params
 named_params = []
 for v in [enc_model, dec_model]:
     named_params.extend([(k, p) for k, p in v.named_parameters() if p.requires_grad])
@@ -192,8 +194,7 @@ print("Found %i parameters." % (total_params))
 
 optimizer = torch.optim.Adam(model_params, lr=1e-4)
 
-# breakpoint()
-
+# Train loop
 num_epochs = 5
 losses = []
 for n in range(num_epochs):
@@ -201,15 +202,23 @@ for n in range(num_epochs):
 
     for i, batch in tqdm(enumerate(dl), total=250):
         
+        # Train for one batch
         loss_curr = enc_dec_step(batch, optimizer, enc_model, dec_model)
         loss_accum += loss_curr.item()
 
+        # Currently the dataloader seems to just iterate forever, not really 
+        # sure whats going on with that, will need to fix
+
+        # For now i've just said 1 'epoch' will be 250 batches
+        # To break up training to allow for logging + testing
         if i >= 250:
             break
     
+    # Generate some equations
     print('Epoch ', n, ' generated equation:')
     test_seq_gen(env, enc_model, dec_model)
 
+    # Log the loss
     loss_accum /= i
     print('Loss: %.4f' % (loss_accum))
     losses.append(loss_accum)
