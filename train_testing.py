@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 import sys
 
-# sys.stdout = open("results/console_output_fixedexpressions.txt", "w")
+sys.stdout = open("results/console_output_only_new.txt", "w")
 
 model_path = './fwd_bwd_ibp.pth'
 
@@ -36,7 +36,7 @@ params = AttrDict({
     'max_ops_G': 15,
     'clean_prefix_expr': True,
     'rewrite_functions': '',
-    'tasks': 'prim_ibp',
+    'tasks': 'prim_ibp,prim_fwd',
     'operators': 'add:10,sub:3,mul:10,div:5,sqrt:4,pow2:4,pow3:2,pow4:1,pow5:1,ln:4,exp:4,sin:4,cos:4,tan:4,asin:1,acos:1,atan:1,sinh:1,cosh:1,tanh:1,asinh:1,acosh:1,atanh:1',
 
     # model parameters
@@ -53,9 +53,10 @@ params = AttrDict({
 
     # Train params
     # I'm not 100% sure what all these do, but they're all required for the model to train
-    'reload_data': "prim_ibp,prim_ibp.train,prim_ibp.valid,prim_ibp.test",
-    'reload_size': 1000,
+    'reload_data': "prim_ibp,prim_ibp.train,prim_ibp.valid,prim_ibp.test;prim_fwd,prim_fwd.train,prim_fwd.valid,prim_fwd.test",
+    'reload_size': 5000,
     'batch_size': 4,
+    'epoch_size': 500,
     'env_base_seed': 0,
     'n_nodes':1,
     'node_id':0,
@@ -119,7 +120,7 @@ def enc_dec_step(batch, optimizer, encoder, decoder):
 
 
 # Generate some problems using the transformer
-def test_seq_gen(env, enc_model, dec_model):
+def test_seq_gen(env, enc_model, dec_model, all_data):
 
     # This is the input for integral problems (-Y')
     test_seq = torch.LongTensor([0, 67, 79]).view(-1, 1)
@@ -130,13 +131,14 @@ def test_seq_gen(env, enc_model, dec_model):
         encoded = enc_model('fwd', x=test_seq, lengths=test_len, causal=False).transpose(0, 1)
 
     # Do a beam search to generate outputs
-    beam_size = 10
+    beam_size = 50
     with torch.no_grad():
-        _, _, beam = dec_model.generate_beam(encoded, test_len, beam_size=beam_size, length_penalty=1.0, early_stopping=1, max_len=200)
+        out1, out2, beam = dec_model.generate_beam(encoded, test_len, beam_size=beam_size, length_penalty=1.0, early_stopping=1, max_len=200)
         assert len(beam) == 1
     hypotheses = beam[0].hyp
     assert len(hypotheses) == beam_size
 
+    # breakpoint()
 
     # Convert outputs to math equations
     for score, sent in sorted(hypotheses, key=lambda x: x[0], reverse=True):
@@ -151,18 +153,34 @@ def test_seq_gen(env, enc_model, dec_model):
             print('invalid prefix!')
 
         try:
+            # tok_fixed = []
+            # for t in tok:
+            #     if t == "Y'":
+            #         tok_fixed += ['derivative', 'f', 'x', 'x']
+            #     tok_fixed.append(t)
+
             tok_crop = tok[2:]
             hyp = env.prefix_to_infix(tok_crop)       # convert to infix
             hyp = env.infix_to_sympy(hyp)        # convert to SymPy
 
             res = "OK"
 
+            integral = hyp.integrate(env.local_dict['x'])
+
+            in_dataset = ' '.join(tok) in all_data
+            # breakpoint()
+
         except:
             res = "INVALID PREFIX EXPRESSION"
             hyp = tok
+            integral = "___"
+            in_dataset = True
 
+        new_eq = 'Not new' if in_dataset else 'new'
         # print result
-        print("%.5f  %s  %s" % (score, res, hyp))
+        if not in_dataset:
+            print("%.5f,  %s,  %s,  %s" % (score, res, new_eq, hyp))
+            print('  Integral: ',integral)
 
 
 # Env is an overarching environment object that does a bunch of useful things
@@ -173,10 +191,19 @@ s = [x.split(',') for x in params.reload_data.split(';') if len(x) > 0]
 data_path = {task: (train_path, valid_path, test_path) for task, train_path, valid_path, test_path in s}
 
 # this both creates the dataset and the dataloader
-dl = env.create_train_iterator(params.tasks[0], params, data_path)
+ds_list = []
+dl_list = []
+dl_dict = {}
+for task in params.tasks:
+    ds, dl = env.create_train_iterator(task, params, data_path)
+    ds_list.append(ds)
+    dl_dict[task] = iter(dl)
 
-# te = next(iter(dl))
-# print(te)
+# print(ds_list[0].data)
+
+all_datapoints = [prob[0] for dset in ds_list for prob in dset.data]
+# print(all_datapoints)
+
 
 # Create the transformer parts
 enc_model = TransformerModel(params, env.id2word, is_encoder=True, with_output=False)
@@ -195,37 +222,40 @@ print("Found %i parameters." % (total_params))
 optimizer = torch.optim.Adam(model_params, lr=1e-4)
 
 # Train loop
-num_epochs = 5
+num_epochs = 20
 losses = []
 for n in range(num_epochs):
     loss_accum = 0
 
-    for i, batch in tqdm(enumerate(dl), total=250):
-        
-        # Train for one batch
-        loss_curr = enc_dec_step(batch, optimizer, enc_model, dec_model)
-        loss_accum += loss_curr.item()
+    n_loops = 0
+    with tqdm(total=params.epoch_size+params.batch_size) as pbar:
+        while n_loops*params.batch_size < params.epoch_size:
+            for task_id in np.random.permutation(len(params.tasks)):
+                task = params.tasks[task_id]
+                batch = next(dl_dict[task])
+                loss_curr = enc_dec_step(batch, optimizer, enc_model, dec_model)
+                loss_accum += loss_curr.item()
 
-        # Currently the dataloader seems to just iterate forever, not really 
-        # sure whats going on with that, will need to fix
+                n_loops += 1
 
-        # For now i've just said 1 'epoch' will be 250 batches
-        # To break up training to allow for logging + testing
-        if i >= 250:
-            break
+                pbar.update(params.batch_size)
     
     # Generate some equations
     print('Epoch ', n, ' generated equation:')
-    test_seq_gen(env, enc_model, dec_model)
+    test_seq_gen(env, enc_model, dec_model, all_datapoints)
 
     # Log the loss
-    loss_accum /= i
+    loss_accum /= n_loops
     print('Loss: %.4f' % (loss_accum))
     losses.append(loss_accum)
 
-# sys.stdout.close()
+# for dp in all_datapoints:
+#     print('  - ',dp)
+
+sys.stdout.close()
 
 plt.plot(losses)
-plt.savefig('results/loss_plot_fixedcrop.png')
+plt.savefig('results/loss_plot_only_new.png')
+# plt.show()
 
 

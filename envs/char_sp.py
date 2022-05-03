@@ -1332,7 +1332,7 @@ class CharSPEnvironment(object):
             params=params,
             path=(None if data_path is None else data_path[task][0])
         )
-        return DataLoader(
+        dataloader = DataLoader(
             dataset,
             timeout=(0 if params.num_workers == 0 else 1800),
             batch_size=params.batch_size,
@@ -1340,6 +1340,8 @@ class CharSPEnvironment(object):
             shuffle=False,
             collate_fn=dataset.collate_fn
         )
+
+        return dataset, dataloader
 
     def create_test_iterator(self, data_type, task, params, data_path):
         """
@@ -1409,6 +1411,8 @@ class EnvDataset(Dataset):
             self.data = [xy.split('\t') for _, xy in lines]
             self.data = [xy for xy in self.data if len(xy) == 2]
             print("Data saved")
+            print(f"Loaded {len(self.data)} equations from the disk.")
+            # print(self.data)
             logger.info(f"Loaded {len(self.data)} equations from the disk.")
 
         # dataset size: infinite iterator for train, finite for valid / test (default of 5000 if no file provided)

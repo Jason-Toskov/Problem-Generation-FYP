@@ -1,0 +1,362 @@
+prim_ibp.train
+unpacking
+Loop done
+Data saved
+Loaded 5000 equations from the disk.
+prim_fwd.train
+unpacking
+Loop done
+Data saved
+Loaded 5000 equations from the disk.
+Found 344337 parameters.
+Epoch  0  generated equation:
+-0.52818,  OK,  new,  2*x**2
+  Integral:  2*x**3/3
+-0.52938,  OK,  new,  x**2 + x + 2
+  Integral:  x**3/3 + x**2/2 + 2*x
+-0.53075,  OK,  new,  x**2 + x + 1
+  Integral:  x**3/3 + x**2/2 + x
+-0.55635,  OK,  new,  x**2 + x
+  Integral:  x**3/3 + x**2/2
+-0.55754,  OK,  new,  x**4
+  Integral:  x**5/5
+-0.58793,  OK,  new,  x**3
+  Integral:  x**4/4
+-0.62762,  OK,  new,  2*x + 2
+  Integral:  x**2 + 2*x
+-0.63200,  OK,  new,  2*x + 1
+  Integral:  x**2 + x
+-0.63817,  OK,  new,  x**2 + x
+  Integral:  x**3/3 + x**2/2
+-0.64539,  OK,  new,  x + cos(x) + 2
+  Integral:  x**2/2 + 2*x + sin(x)
+-0.65280,  OK,  new,  2*x + 2
+  Integral:  x**2 + 2*x
+-0.65653,  OK,  new,  x**2
+  Integral:  x**3/3
+-0.65907,  OK,  new,  x*(x + 2)
+  Integral:  x**3/3 + x**2
+-0.65932,  OK,  new,  x**2 + x + 2
+  Integral:  x**3/3 + x**2/2 + 2*x
+-0.66388,  OK,  new,  x*(x + 1)
+  Integral:  x**3/3 + x**2/2
+-0.66575,  OK,  new,  x**2 + 2*x
+  Integral:  x**3/3 + x**2
+-0.66716,  OK,  new,  x**3
+  Integral:  x**4/4
+-0.66923,  OK,  new,  2*x
+  Integral:  x**2
+-0.67191,  OK,  new,  2*x + 1
+  Integral:  x**2 + x
+-0.67376,  OK,  new,  x + cos(x) + 1
+  Integral:  x**2/2 + x + sin(x)
+-0.68347,  OK,  new,  x**2 + x
+  Integral:  x**3/3 + x**2/2
+-0.68498,  OK,  new,  x + cos(x**2)
+  Integral:  x**2/2 + sqrt(2)*sqrt(pi)*fresnelc(sqrt(2)*Abs(x)/sqrt(pi))*gamma(1/4)/(8*gamma(5/4))
+-0.68568,  OK,  new,  x + 2 + 1/x
+  Integral:  x**2/2 + 2*x + log(x)
+-0.68882,  OK,  new,  x + 1 + 1/x
+  Integral:  x**2/2 + x + log(x)
+-0.70038,  OK,  new,  x**2
+  Integral:  x**3/3
+-0.70346,  OK,  new,  x**2 + 1/x
+  Integral:  x**3/3 + log(x)
+-0.70479,  OK,  new,  x**4 + x + 2
+  Integral:  x**5/5 + x**2/2 + 2*x
+-0.70699,  OK,  new,  x**4 + x + 1
+  Integral:  x**5/5 + x**2/2 + x
+-0.71451,  OK,  new,  x**6 + x + 2
+  Integral:  x**7/7 + x**2/2 + 2*x
+-0.71619,  OK,  new,  x**2 + x + 1
+  Integral:  x**3/3 + x**2/2 + x
+-0.71643,  OK,  new,  x**6 + x + 1
+  Integral:  x**7/7 + x**2/2 + x
+-0.71691,  OK,  new,  2*x + cos(x)
+  Integral:  x**2 + sin(x)
+-0.71985,  OK,  new,  2*x + 4
+  Integral:  x**2 + 4*x
+Loss: 1.9627
+Epoch  1  generated equation:
+-0.47793,  OK,  new,  x**4*(2*x + 2)
+  Integral:  x**6/3 + 2*x**5/5
+-0.47999,  OK,  new,  x**2*(x + 2)
+  Integral:  x**4/4 + 2*x**3/3
+-0.48981,  OK,  new,  3*x**3
+  Integral:  3*x**4/4
+-0.49909,  OK,  new,  x**2*(2*x + 4)
+  Integral:  x**4/2 + 4*x**3/3
+-0.50035,  OK,  new,  x**2*(2 - 2*x)
+  Integral:  -x**4/2 + 2*x**3/3
+-0.50551,  OK,  new,  x**5*(2*x + 2)
+  Integral:  2*x**7/7 + x**6/3
+-0.51102,  OK,  new,  3*x*(2*x + 2)
+  Integral:  2*x**3 + 3*x**2
+-0.51150,  OK,  new,  4*x*(2*x + 2)
+  Integral:  8*x**3/3 + 4*x**2
+-0.52312,  OK,  new,  x*(4*x + 2)
+  Integral:  4*x**3/3 + x**2
+-0.52547,  OK,  new,  (2*x + 2)/x**2
+  Integral:  2*log(x) - 2/x
+-0.53043,  OK,  new,  3*x**2
+  Integral:  x**3
+Loss: 1.2865
+Epoch  2  generated equation:
+-0.53150,  OK,  new,  x**2
+  Integral:  x**3/3
+-0.56162,  OK,  new,  1/x
+  Integral:  log(x)
+-0.57321,  OK,  new,  x**2/2
+  Integral:  x**3/6
+-0.59500,  OK,  new,  x*(2 + 1/x)
+  Integral:  x**2 + x
+-0.59529,  OK,  new,  x*exp(2/x)
+  Integral:  x**2*exp(2/x)/2 + x*exp(2/x) - 2*Ei(2/x)
+-0.60795,  OK,  new,  x*(4 + 1/x)
+  Integral:  2*x**2 + x
+-0.60998,  OK,  new,  (x + 1)**2
+  Integral:  x**3/3 + x**2 + x
+-0.61234,  OK,  new,  2*x**3
+  Integral:  x**4/2
+-0.61465,  OK,  new,  x*exp(2/x**2)
+  Integral:  x**2*exp(2/x**2)/2 - Ei(2/x**2)
+-0.65446,  OK,  new,  x**(-2)
+  Integral:  -1/x
+-0.65858,  OK,  new,  x**3
+  Integral:  x**4/4
+-0.66221,  OK,  new,  x**4
+  Integral:  x**5/5
+-0.67104,  OK,  new,  x*exp(2*x**4)
+  Integral:  -sqrt(2)*I*sqrt(pi)*erf(sqrt(2)*I*x**2)/8
+Loss: 1.1630
+Epoch  3  generated equation:
+-0.52470,  OK,  new,  (2*x + 2)/x**2
+  Integral:  2*log(x) - 2/x
+-0.58002,  OK,  new,  -x**2 - x
+  Integral:  -x**3/3 - x**2/2
+-0.58187,  OK,  new,  x**2*(-x - 1)
+  Integral:  -x**4/4 - x**3/3
+-0.59004,  OK,  new,  x**2*(2 - 2*x)
+  Integral:  -x**4/2 + 2*x**3/3
+-0.59236,  OK,  new,  x**2*(2*x + 6)
+  Integral:  x**4/2 + 2*x**3
+-0.59431,  OK,  new,  4*x*(2*x + 1)
+  Integral:  8*x**3/3 + 2*x**2
+Loss: 1.1209
+Epoch  4  generated equation:
+-0.51871,  OK,  new,  3*x**2
+  Integral:  x**3
+-0.55495,  OK,  new,  0
+  Integral:  0
+-0.57869,  OK,  new,  6*x**2
+  Integral:  2*x**3
+-0.59900,  OK,  new,  x**2*exp(x**2)
+  Integral:  x*exp(x**2)/2 - sqrt(pi)*erfi(x)/4
+-0.61026,  OK,  new,  x**2*(5*x + 5)
+  Integral:  5*x**4/4 + 5*x**3/3
+-0.61828,  OK,  new,  exp(2*x)/x
+  Integral:  Ei(2*x)
+-0.62135,  OK,  new,  x**2 - 2*x
+  Integral:  x**3/3 - x**2
+-0.62303,  OK,  new,  x**2*(2*x + 6)
+  Integral:  x**4/2 + 2*x**3
+-0.63080,  OK,  new,  3
+  Integral:  3*x
+-0.63790,  OK,  new,  cos(x)/x
+  Integral:  log(x**2)/2 - log(Abs(x)) + Ci(Abs(x))
+Loss: 1.0926
+Epoch  5  generated equation:
+-0.62964,  OK,  new,  2*x**2 + 2*x
+  Integral:  2*x**3/3 + x**2
+-0.64369,  OK,  new,  sqrt(x)*(x + 1)
+  Integral:  Piecewise((2*sqrt(x)*(x + 1)**2/5 - 2*sqrt(x)*(x + 1)/15 - 4*sqrt(x)/15, Abs(x + 1) > 1), (2*I*sqrt(-x)*(x + 1)**2/5 - 2*I*sqrt(-x)*(x + 1)/15 - 4*I*sqrt(-x)/15, True))
+Loss: 1.0765
+Epoch  6  generated equation:
+-0.62119,  OK,  new,  x*(x**3 + x)
+  Integral:  x**5/5 + x**3/3
+-0.63728,  OK,  new,  4*x
+  Integral:  2*x**2
+-0.64419,  OK,  new,  3*x/2
+  Integral:  3*x**2/4
+-0.67999,  OK,  new,  x**3 + x
+  Integral:  x**4/4 + x**2/2
+-0.70202,  OK,  new,  x*(x**4 + x)
+  Integral:  x**6/6 + x**3/3
+Loss: 1.0784
+Epoch  7  generated equation:
+-0.55752,  OK,  new,  x**2*(-x - 1)
+  Integral:  -x**4/4 - x**3/3
+-0.56779,  OK,  new,  (2*x + 4)/x
+  Integral:  2*x + 4*log(x)
+-0.56795,  OK,  new,  exp(2*x)/x
+  Integral:  Ei(2*x)
+-0.57669,  OK,  new,  x**2*(4*x - 4)
+  Integral:  x**4 - 4*x**3/3
+-0.58116,  OK,  new,  x**2*(2*x - 4)
+  Integral:  x**4/2 - 4*x**3/3
+-0.60097,  OK,  new,  x**2*(4*x + exp(x))
+  Integral:  x**4 + (x**2 - 2*x + 2)*exp(x)
+-0.60139,  OK,  new,  x**2*(4 - 4*x)
+  Integral:  -x**4 + 4*x**3/3
+Loss: 1.0344
+Epoch  8  generated equation:
+-0.46746,  OK,  new,  2*x**2 + 2*x
+  Integral:  2*x**3/3 + x**2
+-0.47081,  OK,  new,  -x**2 + 2*x
+  Integral:  -x**3/3 + x**2
+-0.48415,  OK,  new,  3*x**2
+  Integral:  x**3
+-0.50404,  OK,  new,  2*x**2 + 3*x
+  Integral:  2*x**3/3 + 3*x**2/2
+-0.51482,  OK,  new,  2*x**2 + 5*x
+  Integral:  2*x**3/3 + 5*x**2/2
+-0.52688,  OK,  new,  0
+  Integral:  0
+-0.53140,  OK,  new,  2*x**2 - x
+  Integral:  2*x**3/3 - x**2/2
+-0.53363,  OK,  new,  3*x**2 + 2*x
+  Integral:  x**3 + x**2
+-0.53418,  OK,  new,  4*x**2
+  Integral:  4*x**3/3
+-0.53451,  OK,  new,  -x**2 - x
+  Integral:  -x**3/3 - x**2/2
+-0.53482,  OK,  new,  2*x**3 + 2*x
+  Integral:  x**4/2 + x**2
+-0.56674,  OK,  new,  2*x**3 + 2*x
+  Integral:  x**4/2 + x**2
+Loss: 1.0457
+Epoch  9  generated equation:
+-0.59326,  OK,  new,  x**2*(-x - 1)
+  Integral:  -x**4/4 - x**3/3
+-0.59590,  OK,  new,  2*(x + 2)/x
+  Integral:  2*x + 4*log(x)
+-0.61196,  OK,  new,  x**2*(1 + 1/x)
+  Integral:  x**3/3 + x**2/2
+invalid prefix!
+Loss: 1.0387
+Epoch  10  generated equation:
+-0.56093,  OK,  new,  2*x**2
+  Integral:  2*x**3/3
+invalid prefix!
+invalid prefix!
+Loss: 1.0664
+Epoch  11  generated equation:
+-0.59303,  OK,  new,  0
+  Integral:  0
+invalid prefix!
+Loss: 1.0422
+Epoch  12  generated equation:
+-0.51699,  OK,  new,  -x/(x + 1)
+  Integral:  -x + log(x + 1)
+-0.52184,  OK,  new,  -x*(1 - x)
+  Integral:  x**3/3 - x**2/2
+-0.53474,  OK,  new,  -x**2 + 2*x
+  Integral:  -x**3/3 + x**2
+-0.54531,  OK,  new,  -3*x
+  Integral:  -3*x**2/2
+-0.55920,  OK,  new,  2*x - 1/x
+  Integral:  x**2 - log(x)
+-0.58669,  OK,  new,  -x*(x + 1)**2
+  Integral:  -x**4/4 - 2*x**3/3 - x**2/2
+-0.60068,  OK,  new,  (x + 1)*sin(x)/x
+  Integral:  -cos(x) + Si(x)
+-0.60837,  OK,  new,  (2*x + sin(x))/x
+  Integral:  2*x + Si(x)
+Loss: 1.0105
+Epoch  13  generated equation:
+-0.60272,  OK,  new,  cos(x)/x
+  Integral:  log(x**2)/2 - log(Abs(x)) + Ci(Abs(x))
+-0.62174,  OK,  new,  x**4
+  Integral:  x**5/5
+-0.63366,  OK,  new,  exp(x)/x
+  Integral:  Ei(x)
+-0.64200,  OK,  new,  x
+  Integral:  x**2/2
+-0.64495,  OK,  new,  cos(x)/x**2
+  Integral:  -cos(Abs(x))/Abs(x) - Si(Abs(x))
+-0.64915,  OK,  new,  sin(x)/x
+  Integral:  Si(Abs(x))
+-0.65030,  OK,  new,  x
+  Integral:  x**2/2
+Loss: 1.0145
+Epoch  14  generated equation:
+-0.47208,  OK,  new,  (2*x + 4)/x
+  Integral:  2*x + 4*log(x)
+-0.50619,  OK,  new,  4*x*(2*x + 1)
+  Integral:  8*x**3/3 + 2*x**2
+-0.51913,  OK,  new,  (x + 2)*(2*x + 1)
+  Integral:  2*x**3/3 + 5*x**2/2 + 2*x
+-0.54468,  OK,  new,  x*(x - 1)/2
+  Integral:  x**3/6 - x**2/4
+-0.54750,  OK,  new,  (x + 1)*(2*x + 1)
+  Integral:  2*x**3/3 + 3*x**2/2 + x
+Loss: 1.0263
+Epoch  15  generated equation:
+-0.53853,  OK,  new,  x**2 + 4*x
+  Integral:  x**3/3 + 2*x**2
+-0.53950,  OK,  new,  x**2*(x + 2)**2
+  Integral:  x**5/5 + x**4 + 4*x**3/3
+-0.54597,  OK,  new,  x**2*(2 - 2*x)
+  Integral:  -x**4/2 + 2*x**3/3
+-0.59628,  OK,  new,  x**2/(x + 2)**2
+  Integral:  x - 4*log(x + 2) - 4/(x + 2)
+-0.59809,  OK,  new,  3*x**3
+  Integral:  3*x**4/4
+Loss: 1.0373
+Epoch  16  generated equation:
+-0.52602,  OK,  new,  (2*x + 4)/x
+  Integral:  2*x + 4*log(x)
+-0.54847,  OK,  new,  x**2
+  Integral:  x**3/3
+-0.55997,  OK,  new,  x**2*(x + 2)
+  Integral:  x**4/4 + 2*x**3/3
+-0.56946,  OK,  new,  x**2*(x + 4)
+  Integral:  x**4/4 + 4*x**3/3
+-0.57736,  OK,  new,  2*x**2
+  Integral:  2*x**3/3
+-0.58052,  OK,  new,  x**2*(x + 2)**2
+  Integral:  x**5/5 + x**4 + 4*x**3/3
+Loss: 1.0286
+Epoch  17  generated equation:
+-0.56397,  OK,  new,  x**2
+  Integral:  x**3/3
+-0.60463,  OK,  new,  x
+  Integral:  x**2/2
+-0.64809,  OK,  new,  x**2 + 2*x
+  Integral:  x**3/3 + x**2
+-0.69956,  OK,  new,  x**(-2)
+  Integral:  -1/x
+-0.70045,  OK,  new,  x**3
+  Integral:  x**4/4
+-0.70872,  OK,  new,  1/x
+  Integral:  log(x)
+-0.75060,  OK,  new,  3*x**2
+  Integral:  x**3
+invalid prefix!
+Loss: 1.0547
+Epoch  18  generated equation:
+-0.51479,  OK,  new,  x*(3*x + 2)
+  Integral:  x**3 + x**2
+Loss: 1.0202
+Epoch  19  generated equation:
+-0.54312,  OK,  new,  3*x/2
+  Integral:  3*x**2/4
+-0.54957,  OK,  new,  x
+  Integral:  x**2/2
+-0.56539,  OK,  new,  -2*x
+  Integral:  -x**2
+-0.60057,  OK,  new,  4*x
+  Integral:  2*x**2
+-0.60582,  OK,  new,  x
+  Integral:  x**2/2
+-0.60867,  OK,  new,  2*x
+  Integral:  x**2
+-0.62387,  OK,  new,  4*x
+  Integral:  2*x**2
+-0.63776,  OK,  new,  3*x
+  Integral:  3*x**2/2
+-0.64558,  OK,  new,  5*x
+  Integral:  5*x**2/2
+-0.65016,  OK,  new,  7*x
+  Integral:  7*x**2/2
+Loss: 1.0497
